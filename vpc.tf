@@ -1,19 +1,12 @@
 locals {
-  az_to_subnet_map = {
-    for i in range(length(var.subnet_cidrs)) : element(var.azs, i % length(var.azs)) => var.subnet_cidrs[i]...
-  }
   flattened_az_to_subnet_map = flatten([
-    for az, subnets in local.az_to_subnet_map : [
-      for subnet in subnets : {
+    for az, subnet_list in var.subnet_cidr_az_mapping : [
+      for subnet in subnet_list : {
         az     = az
         subnet = subnet
       }
     ]
   ])
-}
-
-output "name" {
-  value = local.flattened_az_to_subnet_map
 }
 
 #################
