@@ -9,3 +9,16 @@ variable "subnet_cidr_az_mapping" {
 variable "cidr_prefix" {
   type = string
 }
+
+variable "additional_tags" {
+  type    = map(string)
+  default = {}
+}
+
+variable "tags" {
+  type = map(string)
+}
+
+variable "name" {
+  type = string
+}

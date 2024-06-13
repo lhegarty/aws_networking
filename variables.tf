@@ -33,7 +33,6 @@ variable "cidr_prefix" {
   }
 }
 
-
 variable "subnet_cidr_az_mapping" {
   type = map(list(string))
   default = {
